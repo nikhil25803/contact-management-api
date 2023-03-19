@@ -9,6 +9,7 @@ const getContact = asyncHandler(async (req, res) => {
     })
 })
 
+
 const getContactById = asyncHandler(async (req, res) => {
     const contact = await Contact.findById(req.params.id)
     if (!contact) {
@@ -32,6 +33,7 @@ const createContact = asyncHandler(async (req, res) => {
         name,
         email,
         phone,
+
     })
     res.status(200).json({
         "status": res.statusCode,
@@ -43,7 +45,9 @@ const createContact = asyncHandler(async (req, res) => {
 
 const updateContact = asyncHandler(async (req, res) => {
     const contactId = req.params.id
+
     if (!contactId) {
+
         res.status(404)
         throw new Error("Please pass an ID with the request")
     }
@@ -57,6 +61,7 @@ const updateContact = asyncHandler(async (req, res) => {
         "status": res.statusCode,
         "message": `Update contact for id: ${contactId}`,
         "data": updatedContact
+
     })
 })
 
@@ -67,6 +72,7 @@ const deleteContact = asyncHandler(async (req, res) => {
         throw new Error(`No contact found with id: ${req.params.id}`)
     }
     await Contact.deleteOne({ _id: req.params.id })
+
     res.status(200).json({
         "status": res.statusCode,
         "message": `Delete contact with id: ${req.params.id}`

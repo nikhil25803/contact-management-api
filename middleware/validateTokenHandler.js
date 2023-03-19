@@ -1,21 +1,21 @@
-const expressAsyncHandler = require("express-async-handler");
+const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
 
-const authenticateToken = expressAsyncHandler((req, res, next) => {
-  const authHeader = req.headers['authorization']
-  const token = authHeader && authHeader.split(' ')[1]
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+  
+    if (token == null) return res.sendStatus(401)
+  
+    jwt.verify(token, process.env.ACCESS_TOKEN,(err, user,) => {
 
-  if (token == null) return res.sendStatus(403)
+  
+      if (err) return res.sendStatus(403)
+      req.user = user.user
+  
+      next()
+    })
+  }
 
-  jwt.verify(token, process.env.ACCESS_TOKEN, (err, user,) => {
-
-
-    if (err) return res.sendStatus(500)
-    req.user = user.user
-
-    next();
-  })
-
-})
 
 module.exports = authenticateToken;

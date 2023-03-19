@@ -36,10 +36,10 @@ const errorHandler = (err, req, res, next) => {
         default:
             console.log("No Error, All good !");
             break;
-        
     }
     next();
     
+
 };
 
 module.exports = errorHandler;
