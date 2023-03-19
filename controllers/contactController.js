@@ -40,6 +40,7 @@ const createContact = asyncHandler(async (req, res) => {
     })
 })
 
+
 const updateContact = asyncHandler(async (req, res) => {
     const contactId = req.params.id
     if(!contactId) {

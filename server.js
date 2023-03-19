@@ -19,6 +19,7 @@ app.use(express.json())
 
 // Mount routes
 app.use("/api", require("./routes/contactRoutes"))
+app.use("/api/users", require("./routes/userRoutes"))
 app.use(errorHandler)
 
 
