@@ -11,13 +11,13 @@ A contact management API built using JavaScript, NodeJs and ExpressJS. With JWT 
 ```
 
 > ### **GET** `/api`
-+ ### To get all the contacts, an user needs to have a authorization key. Instead it will show
++ To get all the contacts, an user needs to have a authorization key. Instead it will show
 ```json
 Status: 401 Unauthorized
 ```
 
 > ### **POST** `/api/users/register`
-+ ### To create an user
++ To create an user
 Request
 ```json
 {
@@ -35,7 +35,7 @@ Response
 ```
 
 > ### **POST** `/api/users/login`
-+ ### To login 
++ To login 
 Request
 ```json
 {
@@ -53,7 +53,7 @@ Response
 A access token is returned which can be passed through the header as well as a Bearer token in order to access the private routes.
 
 > ### **GET** `/api/users/current`
-+ ### To get the information of the current loggedin user (pass the access token through the header and make a request)
++ To get the information of the current loggedin user (pass the access token through the header and make a request)
 Response
 ```json
 {
@@ -67,7 +67,7 @@ Response
 
 As all the `contact` routes are private, hence we need to pass the secret key as a Bearer token.
 > ### **POST** `/api`
-+ ### To create a contact by a loggedin user
++ To create a contact by a loggedin user
 Request
 ```json
 {
@@ -89,7 +89,7 @@ Response
 ```
 
 > ### **GET** `/api`
-+ ### To get all the contact created by the logged in user
++ To get all the contact created by the logged in user
 Response
 ```json
 {
@@ -135,14 +135,14 @@ Response
 
 + ### Some more endpoints
 ### **GET** `/api/:id`
-+ ### To search a contact by `id`
++ To search a contact by `id`
 
 ### **GET** `/api/:name`
-+ ### To search a contact by `name`
++ To search a contact by `name`
 
 ### **PUT** `/api/:id`
-+ ### To update a contact by `id`
++ To update a contact by `id`
 
 ### **DELETE** `/api/:id`
-+ ### To delete a contact by `id`
++ To delete a contact by `id`
 ---------
