@@ -7,12 +7,25 @@ const getContact = asyncHandler(async (req, res) => {
     res.status(200).json({
         "status": res.statusCode,
         "data": contacts,
-        "user":req.user
+        "user": req.user,
     })
 })
 
+const getContactByName = asyncHandler(async (req, res) => {
+    const name = req.params.name
+    const contact = await Contact.find({ name: { $regex: '.*' + name + '.*' } })
+    if (!contact) {
+        res.status(404)
+        throw new Error(`No contact found with name: ${req.params.name}`)
+    }
+    res.status(200).json({
+        "status": res.statusCode,
+        "data": contact
+    })
+})
 
 const getContactById = asyncHandler(async (req, res) => {
+
     const contact = await Contact.findById(req.params.id)
     if (!contact) {
         res.status(404)
@@ -85,5 +98,5 @@ const deleteContact = asyncHandler(async (req, res) => {
 
 
 module.exports = {
-    getContact, createContact, updateContact, deleteContact, getContactById
+    getContact, createContact, updateContact, deleteContact, getContactById, getContactByName
 }

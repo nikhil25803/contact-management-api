@@ -1,4 +1,3 @@
-const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
 
 function authenticateToken(req, res, next) {
