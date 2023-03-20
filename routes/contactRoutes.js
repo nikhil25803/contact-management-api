@@ -1,8 +1,10 @@
 const express = require("express")
 const router = express.Router();
 const contactController = require("../controllers/contactController");
+const authenticateToken = require("../middleware/validateTokenHandler");
 
-// contactRouter.use();
+
+router.use(authenticateToken)
 router.route('/').get(contactController.getContact)
 router.route('/:id').get(contactController.getContactById)
 router.route('/').post(contactController.createContact)

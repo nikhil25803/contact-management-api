@@ -17,7 +17,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
     //Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
-    console.log("Hashed Password: ", hashedPassword);
+
     const user = await userModel.create({
         username,
         email,
@@ -60,7 +60,7 @@ const loginUser = asyncHandler(async (req, res) => {
 })
 
 const currentUser = asyncHandler(async (req, res) => {
-    res.status(200).json(req.user.id)
+    res.status(200).json(req.user)
 });
 
 
